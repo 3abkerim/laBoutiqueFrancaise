@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="La boutique Française" uuid="8d6db550-b3ac-4d09-aa9e-67ca43b146d8">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://127.0.0.1:8889/laboutiquefrancaise</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+      <time-zone>Europe/Paris</time-zone>
+    </data-source>
+  </component>
+</project>
