@@ -46,7 +46,7 @@ class ProductController extends AbstractController
     #[Route('/produit/{slug}', name: 'product')]
     public function show($slug)
     {
-        $product = $this->entityManager->getRepository(Products::class)->findOneBySlugl($slug);
+        $product = $this->entityManager->getRepository(Products::class)->findOneBySlug($slug);
 
         if (!$product) {
             return $this->redirectToRoute('products');

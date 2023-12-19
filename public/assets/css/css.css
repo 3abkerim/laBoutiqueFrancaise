@@ -34,3 +34,6 @@ body {
 .product-container {
   margin-bottom: 125px;
 }
+.product-page-price {
+  font-size: 19px;
+}
