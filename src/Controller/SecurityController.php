@@ -12,12 +12,12 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
  */
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/connexion', name: 'app_login')]    
+    #[Route(path: '/connexion', name: 'app_login')]
 
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         if ($this->getUser()) {
-            return $this->redirectToRoute('account');
+            return $this->redirectToRoute('app_account');
         }
 
         // get the login error if there is one
@@ -28,7 +28,7 @@ class SecurityController extends AbstractController
         return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
-    #[Route(path: '/deconnexion', name: 'app_logout')]        
+    #[Route(path: '/deconnexion', name: 'app_logout')]
 
     public function logout(): void
     {
