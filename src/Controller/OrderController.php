@@ -14,7 +14,7 @@ class OrderController extends AbstractController
     {
         $form = $this->createForm(OrderType::class);
         return $this->render('order/index.html.twig', [
-            'form' => $form
+            'form' => $form->createView()
         ]);
     }
 }
