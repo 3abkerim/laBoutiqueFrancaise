@@ -150,4 +150,13 @@ class Order
 
         return $this;
     }
+    public function getTotal()
+    {
+        $products = $this->getOrderDetails()->getValues();
+        $total = null;
+        foreach ($products as $product) {
+            $total += $product->getPrice() * $product->getQuantity();
+        }
+        return $total;
+    }
 }
