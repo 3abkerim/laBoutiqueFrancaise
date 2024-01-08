@@ -15,6 +15,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query\AST\OrderByItem;
 
+
 class OrderController extends AbstractController
 {
 
@@ -83,7 +84,6 @@ class OrderController extends AbstractController
 
             //Enregister mes produits OrderDetails()
 
-
             foreach ($cart->getFull() as $product) {
                 $orderDetails = new OrderDetails;
                 $orderDetails->setMyOrder($order);
@@ -93,7 +93,10 @@ class OrderController extends AbstractController
                 $orderDetails->setTotal($product['product']->getPrice() * $product['quantity']);
                 $this->entityManager->persist($orderDetails);
             }
-            $this->entityManager->flush();
+            // $this->entityManager->flush();
+
+
+
 
             return $this->render('order/add.html.twig', [
                 'cart' => $cart->getFull(),
