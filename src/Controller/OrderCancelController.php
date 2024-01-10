@@ -2,13 +2,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Order;
-use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Order;
 
-class OrderValidateController extends AbstractController
+
+
+class OrderCancelController extends AbstractController
 {
     private $entityManager;
 
@@ -16,16 +18,21 @@ class OrderValidateController extends AbstractController
     {
         $this->entityManager = $entityManager;
     }
-    #[Route('/commande/merci/{stripeSessionId}', name: 'app_order_validate')]
+
+    #[Route('/commande/erreur/{stripeSessionId}', name: 'order_cancel')]
     public function index($stripeSessionId): Response
     {
         $order = $this->entityManager->getRepository(Order::class)->findOneByStripeSessionId($stripeSessionId);
 
-        if (!$order) {
+        if (!$order || $order->getUser() != $this->getUser()) {
             return $this->redirectToRoute('home');
         }
 
-        dd($order);
-        return $this->render('order_validate/index.html.twig');
+        // Envoyer un mail à notre client pour lui informer de l'échec de paiement
+
+
+        return $this->render('order_cancel/index.html.twig', [
+            'order' => $order
+        ]);
     }
 }
