@@ -18,65 +18,64 @@ class RegisterType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('firstname',TextType::class, [
-                'label'=>'Votre prénom',
-                'constraints'=> [
+            ->add('firstname', TextType::class, [
+                'label' => 'Votre prénom',
+                'constraints' => [
                     new Length([
-                        'min'=>2,
-                        'max'=>30,
+                        'min' => 2,
+                        'max' => 30,
                     ])
                 ],
-                'attr'=>[
-                    'placeholder'=>'Prénom'
+                'attr' => [
+                    'placeholder' => 'Prénom'
                 ]
             ])
-            ->add('lastname',TextType::class,[
-                'label'=>'Votre nom',
-                'constraints'=> [
+            ->add('lastname', TextType::class, [
+                'label' => 'Votre nom',
+                'constraints' => [
                     new Length([
-                        'min'=>2,
-                        'max'=>30,
+                        'min' => 2,
+                        'max' => 30,
                     ])
                 ],
-                'attr'=>[
-                    'placeholder'=>'Nom'
+                'attr' => [
+                    'placeholder' => 'Nom'
                 ]
             ])
-            ->add('email',EmailType::class,[
-                'label'=>'Votre email',
-                'constraints'=> [
+            ->add('email', EmailType::class, [
+                'label' => 'Votre email',
+                'constraints' => [
                     new Length([
-                        'min'=>2,
-                        'max'=>30,
+                        'min' => 2,
+                        'max' => 70,
                     ])
                 ],
-                'attr'=>[
-                    'placeholder'=>'Adresse mail'
+                'attr' => [
+                    'placeholder' => 'Adresse mail'
                 ]
             ])
-            ->add('password',RepeatedType::class,[
-                'type'=>PasswordType::class,
-                'invalid_message'=>'Le mot de passe et le password ne match pas',
-                'label'=>'Votre mot de passe',
-                'required'=>true,
-                'first_options'=>[
-                    'label'=>'Mot de passe',
-                    'attr'=>[
-                        'placeholder'=>'Mot de passe'
+            ->add('password', RepeatedType::class, [
+                'type' => PasswordType::class,
+                'invalid_message' => 'Le mot de passe et le password ne match pas',
+                'label' => 'Votre mot de passe',
+                'required' => true,
+                'first_options' => [
+                    'label' => 'Mot de passe',
+                    'attr' => [
+                        'placeholder' => 'Mot de passe'
                     ]
                 ],
-                'second_options'=>[
-                    'label'=>'Confirmez votre mot de passe',
-                    'attr'=>[
-                        'placeholder'=>'Confirmation mot de passe'
+                'second_options' => [
+                    'label' => 'Confirmez votre mot de passe',
+                    'attr' => [
+                        'placeholder' => 'Confirmation mot de passe'
                     ]
                 ],
-                
+
             ])
-            ->add('submit',SubmitType::class,[
-                'label'=>"S'inscrire"
-            ])
-        ;
+            ->add('submit', SubmitType::class, [
+                'label' => "S'inscrire"
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
